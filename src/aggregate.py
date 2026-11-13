@@ -137,7 +137,7 @@ def main():
             ax.set_xticklabels(CLASSES, rotation=45, ha="right")
             ax.set_yticklabels(CLASSES)
             ax.set_xlabel("Predicted")
-            ax.set_ylabel("True")
+            ax.set_ylabel("True" if ax is axes[0] else "")
             ax.set_title(title)
         save(fig, args.out_dir, "fig_cm")
 
