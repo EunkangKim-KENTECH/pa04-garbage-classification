@@ -1,0 +1,13 @@
+# Data (downloaded from Kaggle, not redistributed)
+data/
+# Model weights (distributed via GitHub Releases, see README)
+checkpoints/
+*.pt
+# Secrets
+.kaggle/
+kaggle.json
+access_token
+# Python
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
