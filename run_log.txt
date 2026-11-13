@@ -1,0 +1,197 @@
+[rq1_n5_s0] step 100/500 loss 0.0057
+[rq1_n5_s0] step 200/500 loss 0.0048
+[rq1_n5_s0] step 300/500 loss 0.0008
+[rq1_n5_s0] step 400/500 loss 0.0008
+[rq1_n5_s0] step 500/500 loss 0.0002
+[rq1_n5_s0] acc=0.5133 macro_f1=0.4898 trash_recall=0.2800
+[rq1_n10_s0] step 100/500 loss 0.0031
+[rq1_n10_s0] step 200/500 loss 0.0151
+[rq1_n10_s0] step 300/500 loss 0.0010
+[rq1_n10_s0] step 400/500 loss 0.0013
+[rq1_n10_s0] step 500/500 loss 0.0003
+[rq1_n10_s0] acc=0.5933 macro_f1=0.5857 trash_recall=0.4800
+[rq1_n30_s0] step 100/500 loss 0.0171
+[rq1_n30_s0] step 200/500 loss 0.0199
+[rq1_n30_s0] step 300/500 loss 0.0033
+[rq1_n30_s0] step 400/500 loss 0.0019
+[rq1_n30_s0] step 500/500 loss 0.0031
+[rq1_n30_s0] acc=0.7800 macro_f1=0.7779 trash_recall=0.7200
+[rq1_n100_s0] step 100/500 loss 0.0788
+[rq1_n100_s0] step 200/500 loss 0.0095
+[rq1_n100_s0] step 300/500 loss 0.0066
+[rq1_n100_s0] step 400/500 loss 0.0032
+[rq1_n100_s0] step 500/500 loss 0.0157
+[rq1_n100_s0] acc=0.8733 macro_f1=0.8718 trash_recall=0.9200
+[rq2_t30_ce_s0] step 100/500 loss 0.1798
+[rq2_t30_ce_s0] step 200/500 loss 0.0067
+[rq2_t30_ce_s0] step 300/500 loss 0.0025
+[rq2_t30_ce_s0] step 400/500 loss 0.0025
+[rq2_t30_ce_s0] step 500/500 loss 0.0024
+[rq2_t30_ce_s0] acc=0.8667 macro_f1=0.8655 trash_recall=0.7600
+[rq2_t30_wce_s0] step 100/500 loss 0.2100
+[rq2_t30_wce_s0] step 200/500 loss 0.0069
+[rq2_t30_wce_s0] step 300/500 loss 0.0028
+[rq2_t30_wce_s0] step 400/500 loss 0.0019
+[rq2_t30_wce_s0] step 500/500 loss 0.0032
+[rq2_t30_wce_s0] acc=0.8533 macro_f1=0.8517 trash_recall=0.7200
+[rq2_t10_ce_s0] step 100/500 loss 0.1209
+[rq2_t10_ce_s0] step 200/500 loss 0.0065
+[rq2_t10_ce_s0] step 300/500 loss 0.0031
+[rq2_t10_ce_s0] step 400/500 loss 0.0080
+[rq2_t10_ce_s0] step 500/500 loss 0.0107
+[rq2_t10_ce_s0] acc=0.7667 macro_f1=0.7394 trash_recall=0.2400
+[rq2_t10_wce_s0] step 100/500 loss 0.1450
+[rq2_t10_wce_s0] step 200/500 loss 0.0078
+[rq2_t10_wce_s0] step 300/500 loss 0.0093
+[rq2_t10_wce_s0] step 400/500 loss 0.0222
+[rq2_t10_wce_s0] step 500/500 loss 0.0114
+[rq2_t10_wce_s0] acc=0.8133 macro_f1=0.8051 trash_recall=0.4800
+[rq2_t3_ce_s0] step 100/500 loss 0.0677
+[rq2_t3_ce_s0] step 200/500 loss 0.0111
+[rq2_t3_ce_s0] step 300/500 loss 0.0085
+[rq2_t3_ce_s0] step 400/500 loss 0.0015
+[rq2_t3_ce_s0] step 500/500 loss 0.0035
+[rq2_t3_ce_s0] acc=0.7333 macro_f1=0.6787 trash_recall=0.0400
+[rq2_t3_wce_s0] step 100/500 loss 0.0395
+[rq2_t3_wce_s0] step 200/500 loss 0.0131
+[rq2_t3_wce_s0] step 300/500 loss 0.0138
+[rq2_t3_wce_s0] step 400/500 loss 0.0018
+[rq2_t3_wce_s0] step 500/500 loss 0.0041
+[rq2_t3_wce_s0] acc=0.7400 macro_f1=0.6830 trash_recall=0.0400
+[rq1_n5_s1] step 100/500 loss 0.0017
+[rq1_n5_s1] step 200/500 loss 0.0034
+[rq1_n5_s1] step 300/500 loss 0.0013
+[rq1_n5_s1] step 400/500 loss 0.0004
+[rq1_n5_s1] step 500/500 loss 0.0006
+[rq1_n5_s1] acc=0.5600 macro_f1=0.5545 trash_recall=0.4400
+[rq1_n10_s1] step 100/500 loss 0.0031
+[rq1_n10_s1] step 200/500 loss 0.0030
+[rq1_n10_s1] step 300/500 loss 0.0016
+[rq1_n10_s1] step 400/500 loss 0.0007
+[rq1_n10_s1] step 500/500 loss 0.0005
+[rq1_n10_s1] acc=0.6333 macro_f1=0.6334 trash_recall=0.6000
+[rq1_n30_s1] step 100/500 loss 0.0152
+[rq1_n30_s1] step 200/500 loss 0.0031
+[rq1_n30_s1] step 300/500 loss 0.0015
+[rq1_n30_s1] step 400/500 loss 0.0012
+[rq1_n30_s1] step 500/500 loss 0.0008
+[rq1_n30_s1] acc=0.7733 macro_f1=0.7709 trash_recall=0.6000
+[rq1_n100_s1] step 100/500 loss 0.0397
+[rq1_n100_s1] step 200/500 loss 0.0207
+[rq1_n100_s1] step 300/500 loss 0.0057
+[rq1_n100_s1] step 400/500 loss 0.0016
+[rq1_n100_s1] step 500/500 loss 0.0015
+[rq1_n100_s1] acc=0.8867 macro_f1=0.8869 trash_recall=0.8800
+[rq2_t30_ce_s1] step 100/500 loss 0.0320
+[rq2_t30_ce_s1] step 200/500 loss 0.0372
+[rq2_t30_ce_s1] step 300/500 loss 0.0076
+[rq2_t30_ce_s1] step 400/500 loss 0.0032
+[rq2_t30_ce_s1] step 500/500 loss 0.0033
+[rq2_t30_ce_s1] acc=0.8133 macro_f1=0.8053 trash_recall=0.4800
+[rq2_t30_wce_s1] step 100/500 loss 0.0552
+[rq2_t30_wce_s1] step 200/500 loss 0.0145
+[rq2_t30_wce_s1] step 300/500 loss 0.0071
+[rq2_t30_wce_s1] step 400/500 loss 0.0028
+[rq2_t30_wce_s1] step 500/500 loss 0.0047
+[rq2_t30_wce_s1] acc=0.8400 macro_f1=0.8362 trash_recall=0.6000
+[rq2_t10_ce_s1] step 100/500 loss 0.0587
+[rq2_t10_ce_s1] step 200/500 loss 0.0105
+[rq2_t10_ce_s1] step 300/500 loss 0.0039
+[rq2_t10_ce_s1] step 400/500 loss 0.0611
+[rq2_t10_ce_s1] step 500/500 loss 0.0012
+[rq2_t10_ce_s1] acc=0.7800 macro_f1=0.7522 trash_recall=0.2400
+[rq2_t10_wce_s1] step 100/500 loss 0.0999
+[rq2_t10_wce_s1] step 200/500 loss 0.0179
+[rq2_t10_wce_s1] step 300/500 loss 0.0083
+[rq2_t10_wce_s1] step 400/500 loss 0.0124
+[rq2_t10_wce_s1] step 500/500 loss 0.0018
+[rq2_t10_wce_s1] acc=0.8000 macro_f1=0.7800 trash_recall=0.3200
+[rq2_t3_ce_s1] step 100/500 loss 0.0331
+[rq2_t3_ce_s1] step 200/500 loss 0.0232
+[rq2_t3_ce_s1] step 300/500 loss 0.0019
+[rq2_t3_ce_s1] step 400/500 loss 0.0050
+[rq2_t3_ce_s1] step 500/500 loss 0.1023
+[rq2_t3_ce_s1] acc=0.7267 macro_f1=0.6604 trash_recall=0.0000
+[rq2_t3_wce_s1] step 100/500 loss 0.0801
+[rq2_t3_wce_s1] step 200/500 loss 0.0196
+[rq2_t3_wce_s1] step 300/500 loss 0.0032
+[rq2_t3_wce_s1] step 400/500 loss 0.0107
+[rq2_t3_wce_s1] step 500/500 loss 0.0023
+[rq2_t3_wce_s1] acc=0.7400 macro_f1=0.6822 trash_recall=0.0400
+[rq1_n5_s2] step 100/500 loss 0.0027
+[rq1_n5_s2] step 200/500 loss 0.0009
+[rq1_n5_s2] step 300/500 loss 0.0015
+[rq1_n5_s2] step 400/500 loss 0.0006
+[rq1_n5_s2] step 500/500 loss 0.0003
+[rq1_n5_s2] acc=0.5733 macro_f1=0.5769 trash_recall=0.5600
+[rq1_n10_s2] step 100/500 loss 0.0060
+[rq1_n10_s2] step 200/500 loss 0.0017
+[rq1_n10_s2] step 300/500 loss 0.0023
+[rq1_n10_s2] step 400/500 loss 0.0019
+[rq1_n10_s2] step 500/500 loss 0.0005
+[rq1_n10_s2] acc=0.6200 macro_f1=0.6251 trash_recall=0.6400
+[rq1_n30_s2] step 100/500 loss 0.0115
+[rq1_n30_s2] step 200/500 loss 0.0064
+[rq1_n30_s2] step 300/500 loss 0.0091
+[rq1_n30_s2] step 400/500 loss 0.0030
+[rq1_n30_s2] step 500/500 loss 0.0014
+[rq1_n30_s2] acc=0.7733 macro_f1=0.7732 trash_recall=0.7600
+[rq1_n100_s2] step 100/500 loss 0.1176
+[rq1_n100_s2] step 200/500 loss 0.0351
+[rq1_n100_s2] step 300/500 loss 0.0054
+[rq1_n100_s2] step 400/500 loss 0.0058
+[rq1_n100_s2] step 500/500 loss 0.0118
+[rq1_n100_s2] acc=0.8267 macro_f1=0.8270 trash_recall=0.8000
+[rq2_t30_ce_s2] step 100/500 loss 0.1182
+[rq2_t30_ce_s2] step 200/500 loss 0.0156
+[rq2_t30_ce_s2] step 300/500 loss 0.0077
+[rq2_t30_ce_s2] step 400/500 loss 0.0156
+[rq2_t30_ce_s2] step 500/500 loss 0.0019
+[rq2_t30_ce_s2] acc=0.8133 macro_f1=0.8129 trash_recall=0.6800
+[rq2_t30_wce_s2] step 100/500 loss 0.1022
+[rq2_t30_wce_s2] step 200/500 loss 0.0137
+[rq2_t30_wce_s2] step 300/500 loss 0.0172
+[rq2_t30_wce_s2] step 400/500 loss 0.0141
+[rq2_t30_wce_s2] step 500/500 loss 0.0028
+[rq2_t30_wce_s2] acc=0.8200 macro_f1=0.8178 trash_recall=0.6800
+[rq2_t10_ce_s2] step 100/500 loss 0.0536
+[rq2_t10_ce_s2] step 200/500 loss 0.0047
+[rq2_t10_ce_s2] step 300/500 loss 0.0034
+[rq2_t10_ce_s2] step 400/500 loss 0.0078
+[rq2_t10_ce_s2] step 500/500 loss 0.0009
+[rq2_t10_ce_s2] acc=0.7933 macro_f1=0.7801 trash_recall=0.4000
+[rq2_t10_wce_s2] step 100/500 loss 0.0974
+[rq2_t10_wce_s2] step 200/500 loss 0.0045
+[rq2_t10_wce_s2] step 300/500 loss 0.0042
+[rq2_t10_wce_s2] step 400/500 loss 0.0077
+[rq2_t10_wce_s2] step 500/500 loss 0.0024
+[rq2_t10_wce_s2] acc=0.8067 macro_f1=0.8025 trash_recall=0.5200
+[rq2_t3_ce_s2] step 100/500 loss 0.0345
+[rq2_t3_ce_s2] step 200/500 loss 0.0380
+[rq2_t3_ce_s2] step 300/500 loss 0.0037
+[rq2_t3_ce_s2] step 400/500 loss 0.0121
+[rq2_t3_ce_s2] step 500/500 loss 0.0021
+[rq2_t3_ce_s2] acc=0.7800 macro_f1=0.7624 trash_recall=0.3200
+[rq2_t3_wce_s2] step 100/500 loss 0.0520
+[rq2_t3_wce_s2] step 200/500 loss 0.0605
+[rq2_t3_wce_s2] step 300/500 loss 0.0065
+[rq2_t3_wce_s2] step 400/500 loss 0.0094
+[rq2_t3_wce_s2] step 500/500 loss 0.0023
+[rq2_t3_wce_s2] acc=0.7867 macro_f1=0.7754 trash_recall=0.4000
+RQ1
+  per_class  accuracy_mean  accuracy_std  macro_f1_mean  macro_f1_std  n_seeds
+         5       0.548889      0.031505       0.540426      0.045214        3
+        10       0.615556      0.020367       0.614738      0.025463        3
+        30       0.775556      0.003849       0.773992      0.003577        3
+       100       0.862222      0.031505       0.861916      0.031137        3
+RQ2
+  trash        loss  accuracy_mean  accuracy_std  macro_f1_mean  macro_f1_std  trash_recall_mean  trash_recall_std  trash_precision_mean  trash_precision_std  trash_f1_mean  trash_f1_std  n_seeds
+     3          CE       0.746667      0.029059       0.700502      0.054390           0.120000          0.174356              0.666667             0.577350       0.187257      0.260576        3
+     3 weighted CE       0.755556      0.026943       0.713540      0.053556           0.160000          0.207846              1.000000             0.000000       0.241758      0.285503        3
+    10          CE       0.780000      0.013333       0.757234      0.020851           0.293333          0.092376              1.000000             0.000000       0.448541      0.106424        3
+    10 weighted CE       0.806667      0.006667       0.795871      0.013832           0.440000          0.105830              1.000000             0.000000       0.605903      0.106333        3
+    30          CE       0.831111      0.030792       0.827889      0.032776           0.640000          0.144222              0.914815             0.103240       0.751445      0.136131        3
+    30 weighted CE       0.837778      0.016777       0.835230      0.016937           0.666667          0.061101              0.925697             0.064646       0.774741      0.061487        3
+   100          CE       0.862222      0.031505       0.861916      0.031137           0.866667          0.061101              0.843951             0.040581       0.854872      0.047576        3
+   100 weighted CE       0.862222      0.031505       0.861916      0.031137           0.866667          0.061101              0.843951             0.040581       0.854872      0.047576        3
+Saved tables and figures to results/

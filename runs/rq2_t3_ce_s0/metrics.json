@@ -1,0 +1,116 @@
+{
+  "accuracy": 0.7333333333333333,
+  "macro_f1": 0.6786768657800882,
+  "per_class": {
+    "cardboard": {
+      "precision": 0.7586206896551724,
+      "recall": 0.88,
+      "f1": 0.8148148148148148
+    },
+    "glass": {
+      "precision": 0.8947368421052632,
+      "recall": 0.68,
+      "f1": 0.7727272727272727
+    },
+    "metal": {
+      "precision": 0.6666666666666666,
+      "recall": 0.96,
+      "f1": 0.7868852459016393
+    },
+    "paper": {
+      "precision": 0.5897435897435898,
+      "recall": 0.92,
+      "f1": 0.71875
+    },
+    "plastic": {
+      "precision": 0.8846153846153846,
+      "recall": 0.92,
+      "f1": 0.9019607843137255
+    },
+    "trash": {
+      "precision": 1.0,
+      "recall": 0.04,
+      "f1": 0.07692307692307693
+    }
+  },
+  "confusion_matrix": [
+    [
+      22,
+      0,
+      0,
+      2,
+      1,
+      0
+    ],
+    [
+      0,
+      17,
+      8,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      1,
+      24,
+      0,
+      0,
+      0
+    ],
+    [
+      2,
+      0,
+      0,
+      23,
+      0,
+      0
+    ],
+    [
+      0,
+      1,
+      1,
+      0,
+      23,
+      0
+    ],
+    [
+      5,
+      0,
+      3,
+      14,
+      2,
+      1
+    ]
+  ],
+  "run_name": "rq2_t3_ce_s0",
+  "config": {
+    "data_root": "/tmp/data/Garbage classification/Garbage classification",
+    "run_name": "rq2_t3_ce_s0",
+    "per_class": 100,
+    "trash": 3,
+    "weighted_loss": false,
+    "seed": 0,
+    "steps": 500,
+    "batch_size": 32,
+    "lr": 0.0001,
+    "weight_decay": 0.0001,
+    "pool_csv": "splits/pool.csv",
+    "test_csv": "splits/test.csv",
+    "runs_dir": "runs",
+    "ckpt_dir": "/tmp/ckpt",
+    "no_pretrained": false,
+    "device": "auto",
+    "num_workers": 4
+  },
+  "train_counts": {
+    "cardboard": 100,
+    "glass": 100,
+    "metal": 100,
+    "paper": 100,
+    "plastic": 100,
+    "trash": 3
+  },
+  "train_time_sec": 12.9,
+  "device": "cuda"
+}
