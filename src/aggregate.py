@@ -78,7 +78,7 @@ def main():
         t1.to_csv(os.path.join(args.out_dir, "rq1_table.csv"), index=False, float_format="%.4f")
         print("RQ1\n", t1.to_string(index=False))
 
-        fig, ax = plt.subplots(figsize=(3.3, 2.2))
+        fig, ax = plt.subplots(figsize=(2.4, 1.85))
         for col, label, marker in [("accuracy", "Accuracy", "o"), ("macro_f1", "Macro-F1", "s")]:
             ax.errorbar(t1["per_class"], t1[f"{col}_mean"], yerr=t1[f"{col}_std"],
                         marker=marker, capsize=3, label=label)
@@ -123,14 +123,14 @@ def main():
         t_min = int(rq2["trash"].min())
         panels = [(ref, f"Balanced ({ref_n} trash)"),
                   (rq2[(rq2["trash"] == t_min) & (rq2["loss"] == "CE")], f"Imbalanced ({t_min} trash, CE)")]
-        fig, axes = plt.subplots(1, 2, figsize=(6.8, 2.9))
+        fig, axes = plt.subplots(1, 2, figsize=(4.7, 2.45))
         for ax, (sub, title) in zip(axes, panels):
             cm = np.sum(np.stack(sub["cm"].tolist()), axis=0).astype(float)
             cm_norm = cm / cm.sum(axis=1, keepdims=True)
             ax.imshow(cm_norm, cmap="Blues", vmin=0, vmax=1)
             for i in range(len(CLASSES)):
                 for j in range(len(CLASSES)):
-                    ax.text(j, i, f"{cm_norm[i, j]:.2f}", ha="center", va="center", fontsize=6,
+                    ax.text(j, i, f"{cm_norm[i, j]:.2f}", ha="center", va="center", fontsize=5.5,
                             color="white" if cm_norm[i, j] > 0.5 else "black")
             ax.set_xticks(range(len(CLASSES)))
             ax.set_yticks(range(len(CLASSES)))
