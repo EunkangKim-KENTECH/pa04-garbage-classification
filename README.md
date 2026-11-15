@@ -54,7 +54,7 @@ Class distribution and splits (`src/make_splits.py`, seed 42):
 | Model | ResNet-18, ImageNet-1K pretrained (torchvision), new 6-way head, all layers fine-tuned |
 | Input | Train: RandomResizedCrop 224 (scale 0.6–1.0) + horizontal flip. Test: Resize 256 → CenterCrop 224 |
 | Optimiser | AdamW, lr 1e-4, weight decay 1e-4, batch size 32 |
-| Training budget | **500 steps for every run** (batches sampled with replacement), so conditions differ only in data |
+| Training budget | **500 optimizer updates for every run** (batches sampled with replacement). This fixes the update budget; smaller training sets are therefore revisited more often |
 | Loss | Cross-entropy (CE); RQ2 also uses class-weighted CE with w_c = N / (C · N_c) |
 | Seeds | 0, 1, 2 (affect training-subset sampling, initialisation of the head, and data order) |
 | Metrics | Accuracy, macro-F1, per-class precision/recall/F1, confusion matrix |
@@ -66,7 +66,7 @@ Conditions:
 | RQ1 | 5, 10, 30, 100 | = images per class | CE | 4 × 3 seeds |
 | RQ2 | 100 | 30, 10, 3 | CE, weighted CE | 6 × 3 seeds |
 
-The balanced point of RQ2 (100 trash images) reuses the RQ1 runs with 100 images per class.
+The balanced point of RQ2 (100 trash images) reuses the RQ1 runs with 100 images per class. With balanced classes every class weight equals 1, so weighted CE is identical to CE; the same three runs are therefore the reference point for both loss curves and appear under both losses in `results/rq2_table.csv`.
 
 ## Hardware
 
@@ -74,20 +74,19 @@ All reported results were produced on a university Backend.AI cluster:
 
 | | |
 |---|---|
-| GPU | NVIDIA GPU, fractional allocation (0.7 fGPU, 56 GB visible memory), driver 570.133.20 |
-| CPU / RAM | 8 cores / 32 GB allocated |
+| GPU | NVIDIA GPU on a university Backend.AI cluster (fractional allocation); `nvidia-smi` reports 56,771 MiB and driver 570.133.20 (`results/hardware.txt`) |
 | Software | PyTorch 2.5.1 + CUDA 12.4 wheels (exact package list: `results/pip_freeze.txt`) |
-| Runtime | about 13 s of training per run, about 7 min for all 30 runs (plus data loading and evaluation) |
+| Runtime | 12.3–13.8 s of training per run, 6.5 min of training for all 30 runs (`train_time_sec` in each `metrics.json`; data loading and evaluation not included) |
 
-Any CUDA GPU with 4 GB of memory is enough. The code also runs on CPU (`--device cpu`), but much more slowly.
+The reported results were produced only on the configuration above; memory requirements on other GPUs were not measured. The code also runs on CPU (`--device cpu`), but much more slowly.
 
 ## Reproducing the results
 
 ### 1. Clone and create the environment
 
 ```bash
-git clone https://github.com/<USERNAME>/<REPO>.git
-cd <REPO>
+git clone https://github.com/EunkangKim-KENTECH/pa04-garbage-classification.git
+cd pa04-garbage-classification
 conda env create -f environment.yml
 conda activate pa04
 ```
@@ -147,7 +146,7 @@ Mean ± std over 3 seeds on the fixed 150-image test set (%). Full tables: `resu
 | Images per class | 5 | 10 | 30 | 100 |
 |---|---|---|---|---|
 | Accuracy | 54.9 ± 3.2 | 61.6 ± 2.0 | 77.6 ± 0.4 | 86.2 ± 3.2 |
-| Macro-F1 | 54.0 ± 4.5 | 61.5 ± 2.6 | 77.4 ± 0.4 | 86.2 ± 3.1 |
+| Macro-F1 | 54.0 ± 4.5 | 61.5 ± 2.5 | 77.4 ± 0.4 | 86.2 ± 3.1 |
 
 **RQ2: trash training images (other classes: 100 each)**
 
@@ -165,4 +164,4 @@ Figures: `results/fig_rq1.png`, `results/fig_rq2.png`, `results/fig_cm.png`; the
 
 Note: when a model never predicts `trash` (one seed with 3 trash images and CE), its trash precision is undefined and is counted as 0.
 
-Small differences (typically < 1 percentage point) can occur across GPU models and driver versions even with fixed seeds.
+Results may vary slightly across hardware and software environments, even with fixed seeds.
