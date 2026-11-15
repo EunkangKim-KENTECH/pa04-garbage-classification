@@ -70,9 +70,16 @@ The balanced point of RQ2 (100 trash images) reuses the RQ1 runs with 100 images
 
 ## Hardware
 
-TODO: fill in after running (GPU model from `nvidia-smi`, CUDA version, total runtime).
+All reported results were produced on a university Backend.AI cluster:
 
-The code also runs on CPU (`--device cpu`), but much more slowly.
+| | |
+|---|---|
+| GPU | NVIDIA GPU, fractional allocation (0.7 fGPU, 56 GB visible memory), driver 570.133.20 |
+| CPU / RAM | 8 cores / 32 GB allocated |
+| Software | PyTorch 2.5.1 + CUDA 12.4 wheels (exact package list: `results/pip_freeze.txt`) |
+| Runtime | about 13 s of training per run, about 7 min for all 30 runs (plus data loading and evaluation) |
+
+Any CUDA GPU with 4 GB of memory is enough. The code also runs on CPU (`--device cpu`), but much more slowly.
 
 ## Reproducing the results
 
@@ -117,7 +124,14 @@ python src/train.py --data_root "data/Garbage classification/Garbage classificat
 
 ### 4. Evaluate the released weights (no training needed)
 
-Download the weights from TODO (GitHub Releases link) into `checkpoints/`, then:
+All 30 trained checkpoints (1.2 GB) are attached to the [v1.0 release](https://github.com/EunkangKim-KENTECH/pa04-garbage-classification/releases/tag/v1.0). Download and extract them in the repository root:
+
+```bash
+wget https://github.com/EunkangKim-KENTECH/pa04-garbage-classification/releases/download/v1.0/pa04_checkpoints.tar.gz
+tar -xzf pa04_checkpoints.tar.gz && mv ckpt checkpoints
+```
+
+Each file is named after its run (e.g. `checkpoints/rq2_t3_ce_s0.pt`). Then:
 
 ```bash
 python src/evaluate.py --ckpt checkpoints/rq1_n100_s0.pt \
@@ -126,6 +140,29 @@ python src/evaluate.py --ckpt checkpoints/rq1_n100_s0.pt \
 
 ## Expected results
 
-TODO: copy the final numbers from `results/rq1_table.csv` and `results/rq2_table.csv` (mean ± std over 3 seeds).
+Mean ± std over 3 seeds on the fixed 150-image test set (%). Full tables: `results/rq1_table.csv`, `results/rq2_table.csv`; per-run numbers: `results/all_runs.csv`.
+
+**RQ1: training images per class (balanced)**
+
+| Images per class | 5 | 10 | 30 | 100 |
+|---|---|---|---|---|
+| Accuracy | 54.9 ± 3.2 | 61.6 ± 2.0 | 77.6 ± 0.4 | 86.2 ± 3.2 |
+| Macro-F1 | 54.0 ± 4.5 | 61.5 ± 2.6 | 77.4 ± 0.4 | 86.2 ± 3.1 |
+
+**RQ2: trash training images (other classes: 100 each)**
+
+| Trash images | Loss | Accuracy | Macro-F1 | Trash recall |
+|---|---|---|---|---|
+| 100 | CE | 86.2 ± 3.2 | 86.2 ± 3.1 | 86.7 ± 6.1 |
+| 30 | CE | 83.1 ± 3.1 | 82.8 ± 3.3 | 64.0 ± 14.4 |
+| 30 | weighted CE | 83.8 ± 1.7 | 83.5 ± 1.7 | 66.7 ± 6.1 |
+| 10 | CE | 78.0 ± 1.3 | 75.7 ± 2.1 | 29.3 ± 9.2 |
+| 10 | weighted CE | 80.7 ± 0.7 | 79.6 ± 1.4 | 44.0 ± 10.6 |
+| 3 | CE | 74.7 ± 2.9 | 70.1 ± 5.4 | 12.0 ± 17.4 |
+| 3 | weighted CE | 75.6 ± 2.7 | 71.4 ± 5.4 | 16.0 ± 20.8 |
+
+Figures: `results/fig_rq1.png`, `results/fig_rq2.png`, `results/fig_cm.png`.
+
+Note: when a model never predicts `trash` (one seed with 3 trash images and CE), its trash precision is undefined and is counted as 0.
 
 Small differences (typically < 1 percentage point) can occur across GPU models and driver versions even with fixed seeds.
