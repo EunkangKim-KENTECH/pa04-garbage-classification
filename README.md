@@ -1,4 +1,4 @@
-# How Much and How Balanced? Data Effects in Recyclable Waste Classification
+# Effects of Training Set Size and Class Imbalance on Waste Image Classification
 
 EF2039 PA04. A ResNet-18 image classifier for six waste categories, used to study two data-related research questions:
 
