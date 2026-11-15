@@ -161,7 +161,7 @@ Mean ± std over 3 seeds on the fixed 150-image test set (%). Full tables: `resu
 | 3 | CE | 74.7 ± 2.9 | 70.1 ± 5.4 | 12.0 ± 17.4 |
 | 3 | weighted CE | 75.6 ± 2.7 | 71.4 ± 5.4 | 16.0 ± 20.8 |
 
-Figures: `results/fig_rq1.png`, `results/fig_rq2.png`, `results/fig_cm.png`.
+Figures: `results/fig_rq1.png`, `results/fig_rq2.png`, `results/fig_cm.png`; the paper figure is `results/fig_main.pdf` (RQ1 curve and both confusion matrices in one row).
 
 Note: when a model never predicts `trash` (one seed with 3 trash images and CE), its trash precision is undefined and is counted as 0.
 
