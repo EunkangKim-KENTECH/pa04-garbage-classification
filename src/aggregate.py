@@ -6,6 +6,7 @@ Outputs (in --out_dir, default results/):
   fig_rq1.*      accuracy / macro-F1 vs. images per class
   fig_rq2.*      trash recall / macro-F1 vs. number of trash images
   fig_cm.*       confusion matrices (balanced vs. most imbalanced)
+  fig_main.*     paper figure: fig_rq1 + fig_cm in one row with aligned axes
 """
 import argparse
 import glob
@@ -61,6 +62,41 @@ def save(fig, out_dir, name):
     plt.close(fig)
 
 
+def plot_rq1(ax, t1):
+    """Accuracy / macro-F1 versus training images per class (RQ1)."""
+    for col, label, marker in [("accuracy", "Accuracy", "o"), ("macro_f1", "Macro-F1", "s")]:
+        ax.errorbar(t1["per_class"], t1[f"{col}_mean"], yerr=t1[f"{col}_std"],
+                    marker=marker, capsize=3, label=label)
+    ax.set_xscale("log")
+    ax.set_xticks(t1["per_class"])
+    ax.set_xticklabels(t1["per_class"])
+    ax.set_xlabel("Training images per class")
+    ax.set_ylabel("Score")
+    ax.grid(alpha=0.3)
+    ax.legend()
+
+
+def confusion(sub):
+    """Confusion matrix summed over seeds, normalized per true class (row)."""
+    cm = np.sum(np.stack(sub["cm"].tolist()), axis=0).astype(float)
+    return cm / cm.sum(axis=1, keepdims=True)
+
+
+def plot_cm(ax, cm_norm, title, show_class_names=True):
+    ax.imshow(cm_norm, cmap="Blues", vmin=0, vmax=1)
+    for i in range(len(CLASSES)):
+        for j in range(len(CLASSES)):
+            ax.text(j, i, f"{cm_norm[i, j]:.2f}", ha="center", va="center", fontsize=5.5,
+                    color="white" if cm_norm[i, j] > 0.5 else "black")
+    ax.set_xticks(range(len(CLASSES)))
+    ax.set_yticks(range(len(CLASSES)))
+    ax.set_xticklabels(CLASSES, rotation=45, ha="right")
+    ax.set_yticklabels(CLASSES if show_class_names else [])
+    ax.set_xlabel("Predicted")
+    ax.set_ylabel("True" if show_class_names else "")
+    ax.set_title(title)
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--runs_dir", default="runs")
@@ -79,16 +115,7 @@ def main():
         print("RQ1\n", t1.to_string(index=False))
 
         fig, ax = plt.subplots(figsize=(2.4, 1.85))
-        for col, label, marker in [("accuracy", "Accuracy", "o"), ("macro_f1", "Macro-F1", "s")]:
-            ax.errorbar(t1["per_class"], t1[f"{col}_mean"], yerr=t1[f"{col}_std"],
-                        marker=marker, capsize=3, label=label)
-        ax.set_xscale("log")
-        ax.set_xticks(t1["per_class"])
-        ax.set_xticklabels(t1["per_class"])
-        ax.set_xlabel("Training images per class")
-        ax.set_ylabel("Score")
-        ax.grid(alpha=0.3)
-        ax.legend()
+        plot_rq1(ax, t1)
         save(fig, args.out_dir, "fig_rq1")
 
     # ---------------- RQ2: class imbalance ----------------
@@ -124,22 +151,23 @@ def main():
         panels = [(ref, f"Balanced ({ref_n} trash)"),
                   (rq2[(rq2["trash"] == t_min) & (rq2["loss"] == "CE")], f"Imbalanced ({t_min} trash, CE)")]
         fig, axes = plt.subplots(1, 2, figsize=(4.7, 2.45))
-        for ax, (sub, title) in zip(axes, panels):
-            cm = np.sum(np.stack(sub["cm"].tolist()), axis=0).astype(float)
-            cm_norm = cm / cm.sum(axis=1, keepdims=True)
-            ax.imshow(cm_norm, cmap="Blues", vmin=0, vmax=1)
-            for i in range(len(CLASSES)):
-                for j in range(len(CLASSES)):
-                    ax.text(j, i, f"{cm_norm[i, j]:.2f}", ha="center", va="center", fontsize=5.5,
-                            color="white" if cm_norm[i, j] > 0.5 else "black")
-            ax.set_xticks(range(len(CLASSES)))
-            ax.set_yticks(range(len(CLASSES)))
-            ax.set_xticklabels(CLASSES, rotation=45, ha="right")
-            ax.set_yticklabels(CLASSES if ax is axes[0] else [])
-            ax.set_xlabel("Predicted")
-            ax.set_ylabel("True" if ax is axes[0] else "")
-            ax.set_title(title)
+        for k, (ax, (sub, title)) in enumerate(zip(axes, panels)):
+            plot_cm(ax, confusion(sub), title, show_class_names=(k == 0))
         save(fig, args.out_dir, "fig_cm")
+
+        # Paper figure: RQ1 curve and both confusion matrices in one row.
+        # All three plot areas get the same height so their edges line up.
+        if len(rq1):
+            fig = plt.figure(figsize=(6.9, 2.35), layout="constrained")
+            gs = fig.add_gridspec(1, 3, width_ratios=[1.25, 1, 1])
+            ax0 = fig.add_subplot(gs[0])
+            plot_rq1(ax0, t1)
+            ax0.set_title("(a) RQ1: data quantity")
+            ax0.set_box_aspect(1 / 1.25)
+            for k, (sub, title) in enumerate(panels):
+                ax = fig.add_subplot(gs[k + 1])
+                plot_cm(ax, confusion(sub), f"({'bc'[k]}) {title}", show_class_names=(k == 0))
+            save(fig, args.out_dir, "fig_main")
 
     df.drop(columns=["cm"]).to_csv(os.path.join(args.out_dir, "all_runs.csv"),
                                    index=False, float_format="%.4f")
